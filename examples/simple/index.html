@@ -12,14 +12,13 @@
     <hr>
 
     <div ui-view>
-      Howdy {{ 2 + 2 }}
+      Waiting on Angular to bootstrap...
     </div>
 
     <script src="/examples/lib/angular.js"></script>
     <script src="/examples/lib/loading-bar.min.js"></script>
     <script src="/examples/lib/angular-ui-router.min.js"></script>
-    <script src="/examples/lib/require.min.js"></script>
 
-    <script src="../../tmp/amd/app/main.js"></script>
+    <script data-main="../../../tmp/simple/amd/main.js" src="/examples/lib/require.min.js"></script>
   </body>
 </html>

@@ -31,17 +31,17 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     ngmodularize: {
-      amd: {
+      simple_amd: {
         options: {
           paths: {
-            app: '../../tmp/amd/app'
+            app: 'app'
           },
           modules: ['app/app']
         },
         expand: true,
-        cwd:    'examples/amd/app',
+        cwd:    'examples/simple',
         src:    '**/*.js',
-        dest:   'tmp/amd/app'
+        dest:   'tmp/simple/amd'
       },
     },
 
