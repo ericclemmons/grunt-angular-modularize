@@ -9,9 +9,10 @@ angular
       $stateProvider
         .state('home', {
           controller:   'HomeController',
-          templateUrl:  'admin/templates/home.html',
-          url:          '/'
+          templateUrl:  'app/templates/home.html',
+          url:          ''
         })
+      ;
     }
   ])
 ;

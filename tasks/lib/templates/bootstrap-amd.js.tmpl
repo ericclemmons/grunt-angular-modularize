@@ -1,0 +1,9 @@
+window.name = "NG_DEFER_BOOTSTRAP!";
+
+require.config({
+  paths: PATHS
+});
+
+require(MODULES, function() {
+  angular.resumeBootstrap(DEPENDENCIES);
+});

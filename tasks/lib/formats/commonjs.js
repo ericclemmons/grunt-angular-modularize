@@ -1,4 +1,4 @@
-var commonjs = function(src) {
+var commonjs = function(src, deps) {
 
 };
 

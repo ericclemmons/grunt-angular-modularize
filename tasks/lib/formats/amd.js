@@ -1,11 +1,10 @@
-var amd = function(module, deps, src) {
-  var paths = deps.map(function(dep) {
+var amd = function(src, deps) {
+  var indented  = src.replace(/^|\n/g, '\n  ');
+  var paths     = deps.map(function(dep) {
     return dep.replace(/\./g, '/');
   });
 
-  var indented = src.replace(/^|\n/g, '\n  ');
-
-  return 'define(["' + paths.join('", "') + '"], function() {\n' + indented + '\n});\n'
+  return 'define(' + JSON.stringify(paths) + ', function() {\n' + indented + '\n});\n';
 };
 
 module.exports = amd;

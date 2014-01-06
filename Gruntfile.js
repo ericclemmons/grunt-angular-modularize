@@ -15,8 +15,9 @@ module.exports = function(grunt) {
     jshint: {
       all: [
         'Gruntfile.js',
-        'tasks/*.js',
+        'tasks/**/*.js',
         '<%= nodeunit.tests %>',
+        'test/fixtures/**/*.js'
       ],
       options: {
         jshintrc: '.jshintrc',
@@ -30,10 +31,17 @@ module.exports = function(grunt) {
 
     // Configuration to be run (and then tested).
     ngmodularize: {
-      default_options: {
+      amd: {
+        options: {
+          paths: {
+            app: '../../tmp/amd/app'
+          },
+          modules: ['app/app']
+        },
         expand: true,
-        src:    'test/fixtures/**/*.js',
-        dest:   'tmp/'
+        cwd:    'examples/amd/app',
+        src:    '**/*.js',
+        dest:   'tmp/amd/app'
       },
     },
 
@@ -57,6 +65,6 @@ module.exports = function(grunt) {
   grunt.registerTask('test', ['clean', 'ngmodularize', 'nodeunit']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['jshint', 'test']);
+  grunt.registerTask('default', ['clean', 'jshint', 'ngmodularize']);
 
 };

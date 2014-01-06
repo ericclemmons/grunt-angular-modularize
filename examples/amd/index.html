@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Angular Modularize Demo - AMD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/examples/lib/loading-bar.min.css">
+  </head>
+  <body ng-app="app">
+    <h1>Angular Modularize Demo</h1>
+    <h3>AMD</h3>
+
+    <hr>
+
+    <div ui-view>
+      Howdy {{ 2 + 2 }}
+    </div>
+
+    <script src="/examples/lib/angular.js"></script>
+    <script src="/examples/lib/loading-bar.min.js"></script>
+    <script src="/examples/lib/angular-ui-router.min.js"></script>
+    <script src="/examples/lib/require.min.js"></script>
+
+    <script src="../../tmp/amd/app/main.js"></script>
+  </body>
+</html>
