@@ -33,10 +33,11 @@ module.exports = function(grunt) {
     ngmodularize: {
       simple_amd: {
         options: {
+          format: 'amd',
+          requires: ['app/app'],
           paths: {
             app: 'app'
           },
-          modules: ['app/app']
         },
         expand: true,
         cwd:    'examples/simple',

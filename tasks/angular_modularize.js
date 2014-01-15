@@ -8,15 +8,16 @@
 
 'use strict';
 
-var Modularize  = require('./lib/modularize');
+var Modularize  = require('../lib/modularize');
 var path        = require('path');
 
 module.exports = function(grunt) {
 
   grunt.registerMultiTask('ngmodularize', 'Easily convert angular.modules to be AMD/CommonJS-compatible', function() {
     var options = this.options({
-      format:     'amd',
-      paths:      {}
+      format:   null,
+      paths:    {},
+      requires: []
     });
 
     var modularize = new Modularize(options);
@@ -31,25 +32,27 @@ module.exports = function(grunt) {
         return true;
       });
 
-      var srcs = paths
+      var modules = paths
         .map(grunt.file.read)
         .map(grunt.util.normalizelf)
+        .map(function(src) {
+          var deps = modularize.parse(src).slice(1);
+          return modularize.format(src, deps);
+        })
       ;
-
-      var modules = srcs.map(function(src) {
-        var deps = modularize.parse(src).slice(1);
-
-        return modularize.format(src, deps);
-      });
 
       grunt.file.write(f.dest, modules.join(grunt.util.linefeed));
       grunt.log.writeln('File "' + f.dest + '" created.');
     });
 
-    var mainPath = path.join(this.data.dest, 'main.js');
+    var bootstrap = modularize.bootstrap();
 
-    grunt.file.write(mainPath, modularize.bootstrap());
-    grunt.log.writeln('AMD Bootstrap "' + mainPath + '" created.');
+    if (bootstrap) {
+      var mainPath = path.join(this.data.dest, 'main.js');
+
+      grunt.file.write(mainPath, bootstrap);
+      grunt.log.writeln('Bootstrap "' + mainPath + '" created.');
+    }
   });
 
 };

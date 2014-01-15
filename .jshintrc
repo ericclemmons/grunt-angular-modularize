@@ -11,6 +11,8 @@
   "eqnull": true,
   "node": true,
   "globals": {
-    "angular": true
+    "angular": true,
+    "define": true,
+    "window": true
   }
 }

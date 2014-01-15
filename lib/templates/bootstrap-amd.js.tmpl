@@ -4,6 +4,6 @@ require.config({
   paths: PATHS
 });
 
-require(MODULES, function() {
-  angular.resumeBootstrap(DEPENDENCIES);
+require(REQUIRES, function() {
+  angular.resumeBootstrap(MODULES);
 });
