@@ -29,10 +29,13 @@
     "test": "grunt test"
   },
   "devDependencies": {
+    "browserify": "~3.20.0",
+    "grunt": "~0.4.1",
+    "grunt-browserify": "~1.3.0",
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-nodeunit": "~0.2.0",
-    "grunt": "~0.4.1"
+    "grunt-contrib-requirejs": "~0.4.1"
   },
   "peerDependencies": {
     "grunt": "~0.4.1"

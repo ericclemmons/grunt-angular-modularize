@@ -35,9 +35,11 @@ module.exports = function(grunt) {
       var modules = paths
         .map(grunt.file.read)
         .map(grunt.util.normalizelf)
-        .map(function(src) {
-          var deps = modularize.parse(src).slice(1);
-          return modularize.format(src, deps);
+        .map(function(content) {
+          var submodules  = modularize.parse(content);
+          var current     = submodules.shift();
+
+          return modularize.format(current, submodules, content);
         })
       ;
 

@@ -24,6 +24,13 @@ module.exports = function(grunt) {
       },
     },
 
+    browserify: {
+      simple_cjs: {
+        src: 'tmp/simple/cjs/app/app.js',
+        dest: 'tmp/simple/cjs/app/app.build.js'
+      }
+    },
+
     // Before generating any new files, remove any previously-created files.
     clean: {
       tests: ['tmp'],
@@ -44,6 +51,18 @@ module.exports = function(grunt) {
         src:    '**/*.js',
         dest:   'tmp/simple/amd'
       },
+      simple_cjs: {
+        options: {
+          format: 'cjs',
+          paths: {
+            app: '../'
+          }
+        },
+        expand: true,
+        cwd:    'examples/simple',
+        src:    '**/*.js',
+        dest:   'tmp/simple/cjs'
+      },
     },
 
     // Unit tests.
@@ -57,8 +76,9 @@ module.exports = function(grunt) {
   grunt.loadTasks('tasks');
 
   // These plugins provide necessary tasks.
-  grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
