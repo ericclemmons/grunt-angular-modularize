@@ -50,6 +50,8 @@ module.exports = function(grunt) {
       grunt.file.write(mainPath, bootstrap);
       grunt.log.writeln('Bootstrap "' + mainPath + '" created.');
     }
+
+    modularize.configure(grunt, this);
   });
 
 };

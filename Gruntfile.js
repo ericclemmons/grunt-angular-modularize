@@ -70,15 +70,6 @@ module.exports = function(grunt) {
       tests: ['test/*_test.js'],
     },
 
-    requirejs: {
-      simple_amd: {
-        options: {
-          name: 'main',
-          mainConfigFile: 'tmp/simple/amd/main.js',
-          out: 'tmp/simple/amd/main.build.js'
-        }
-      }
-    }
   });
 
   // Actually load this plugin's task(s).
