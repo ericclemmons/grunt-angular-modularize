@@ -70,6 +70,15 @@ module.exports = function(grunt) {
       tests: ['test/*_test.js'],
     },
 
+    requirejs: {
+      simple_amd: {
+        options: {
+          name: 'main',
+          mainConfigFile: 'tmp/simple/amd/main.js',
+          out: 'tmp/simple/amd/main.build.js'
+        }
+      }
+    }
   });
 
   // Actually load this plugin's task(s).
@@ -80,12 +89,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-nodeunit');
+  grunt.loadNpmTasks('grunt-contrib-requirejs');
 
   // Whenever the "test" task is run, first clean the "tmp" dir, then run this
   // plugin's task(s), then test the result.
-  grunt.registerTask('test', ['clean', 'ngmodularize', 'nodeunit']);
+  grunt.registerTask('test', ['default', 'nodeunit']);
 
   // By default, lint and run all tests.
-  grunt.registerTask('default', ['clean', 'jshint', 'ngmodularize']);
+  grunt.registerTask('default', ['clean', 'jshint', 'ngmodularize', 'requirejs', 'browserify']);
 
 };

@@ -35,12 +35,7 @@ module.exports = function(grunt) {
       var modules = paths
         .map(grunt.file.read)
         .map(grunt.util.normalizelf)
-        .map(function(content) {
-          var submodules  = modularize.parse(content);
-          var current     = submodules.shift();
-
-          return modularize.format(current, submodules, content);
-        })
+        .map(modularize.module.bind(modularize))
       ;
 
       grunt.file.write(f.dest, modules.join(grunt.util.linefeed));

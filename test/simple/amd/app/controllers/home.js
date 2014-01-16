@@ -1,5 +1,5 @@
 define([], function() {
-
+  
   angular
     .module('app.controllers.home', [])
     .controller('HomeController', [

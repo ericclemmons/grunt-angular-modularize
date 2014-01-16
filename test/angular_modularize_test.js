@@ -2,46 +2,34 @@
 
 var grunt = require('grunt');
 
-/*
-  ======== A Handy Little Nodeunit Reference ========
-  https://github.com/caolan/nodeunit
-
-  Test methods:
-    test.expect(numAssertions)
-    test.done()
-  Test assertions:
-    test.ok(value, [message])
-    test.equal(actual, expected, [message])
-    test.notEqual(actual, expected, [message])
-    test.deepEqual(actual, expected, [message])
-    test.notDeepEqual(actual, expected, [message])
-    test.strictEqual(actual, expected, [message])
-    test.notStrictEqual(actual, expected, [message])
-    test.throws(block, [error], [message])
-    test.doesNotThrow(block, [error], [message])
-    test.ifError(value)
-*/
+var compare = function(file) {
+  return this.equal(
+    grunt.file.read('tmp/' + file),
+    grunt.file.read('test/' + file),
+    'Modularized file does not match example'
+  );
+};
 
 exports.angular_modularize = {
-  setUp: function(done) {
-    // setup here if necessary
-    done();
-  },
-  default_options: function(test) {
-    test.expect(1);
-
-    var actual = grunt.file.read('tmp/default_options');
-    var expected = grunt.file.read('test/expected/default_options');
-    test.equal(actual, expected, 'should describe what the default behavior is.');
+  simple_amd: function(test) {
+    [
+      'simple/amd/main.js',
+      'simple/amd/main.build.js',
+      'simple/amd/app/app.js',
+      'simple/amd/app/routes/home.js',
+      'simple/amd/app/controllers/home.js',
+    ].forEach(compare.bind(test));
 
     test.done();
   },
-  custom_options: function(test) {
-    test.expect(1);
 
-    var actual = grunt.file.read('tmp/custom_options');
-    var expected = grunt.file.read('test/expected/custom_options');
-    test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
+  simple_cjs: function(test) {
+    [
+      'simple/cjs/app/app.js',
+      'simple/cjs/app/app.build.js',
+      'simple/cjs/app/routes/home.js',
+      'simple/cjs/app/controllers/home.js',
+    ].forEach(compare.bind(test));
 
     test.done();
   },
