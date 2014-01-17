@@ -204,13 +204,14 @@ with RequireJS!
 Add the following to your `index.html`:
 
 ```html
-<script data-main="path/to/build/admin/main.js" src="path/to/bower_components/requirejs/require.min.js"></script>
+<script src="path/to/bower_components/requirejs/require.min.js"></script>
+<script src="path/to/build/admin/main.js"></script>
 ```
 
 Later, when you optimize with `$ grunt ngmodularize requirejs`, your HTML can then have:
 
 ```html
-<script data-main="path/to/build/admin/main.dist.js" src="path/to/bower_components/requirejs/require.min.js"></script>
+<script src="path/to/build/admin/main.dist.js"></script>
 ```
 
 Notice the `.dist.js` extension?  This is automatically configured in the `requirejs`
