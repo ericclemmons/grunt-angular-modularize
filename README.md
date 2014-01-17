@@ -9,10 +9,16 @@
 > [Browserify][5] (CommonJS),
 > or simply [concat][3].
 
-- [Simple RequireJS (AMD) Demo](https://rawgithub.com/ericclemmons/grunt-angular-modularize/master/examples/simple/amd.html)
-- [Simple Browserify (CommonJS) Demo](https://rawgithub.com/ericclemmons/grunt-angular-modularize/master/examples/simple/cjs.html)
+Using a [Simple Example](https://github.com/ericclemmons/grunt-angular-modularize/tree/master/examples/simple)
+as the input:
 
-*You may need to refresh upon first loading just for these demos.*
+- [Simple RequireJS (AMD) Demo](https://rawgithub.com/ericclemmons/grunt-angular-modularize/master/examples/simple/amd.html)
+- [Simple RequireJS (AMD) Output](https://github.com/ericclemmons/grunt-angular-modularize/tree/master/test/simple/amd/app)
+- [Simple Browserify (CommonJS) Demo](https://rawgithub.com/ericclemmons/grunt-angular-modularize/master/examples/simple/cjs.html)
+- [Simple RequireJS (CommonJS) Output](https://github.com/ericclemmons/grunt-angular-modularize/tree/master/test/simple/cjs/app)
+
+*These demos may need to be refreshed upon loading.*
+
 
 ## Table of Contents
 
@@ -43,7 +49,6 @@ grunt.loadNpmTasks('grunt-angular-modularize');
 
 ## Usage
 
-*See [/examples][2]*
 
 ### 1. Properly structure your AngularJS app
 
