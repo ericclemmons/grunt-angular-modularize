@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 
     browserify: {
       simple_cjs: {
-        src: 'tmp/simple/cjs/app/app.js',
+        src: 'tmp/simple/cjs/app/bootstrap.js',
         dest: 'tmp/simple/cjs/app/app.build.js'
       }
     },
@@ -43,25 +43,21 @@ module.exports = function(grunt) {
           format: 'amd',
           requires: ['app/app'],
           paths: {
-            app: 'app'
+            app: '../app'
           },
         },
-        expand: true,
-        cwd:    'examples/simple',
-        src:    '**/*.js',
-        dest:   'tmp/simple/amd'
+        src:    'examples/simple/app/app.js',
+        dest:   'tmp/simple/amd/app/app.js'
       },
       simple_cjs: {
         options: {
           format: 'cjs',
           paths: {
-            app: '../'
+            app: '../app'
           }
         },
-        expand: true,
-        cwd:    'examples/simple',
-        src:    '**/*.js',
-        dest:   'tmp/simple/cjs'
+        cwd:    'examples/simple/app/bootstrap.js',
+        dest:   'tmp/simple/cjs/app/bootstrap.js'
       },
     },
 

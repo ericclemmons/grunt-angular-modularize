@@ -5,5 +5,7 @@ require.config({
 });
 
 require(REQUIRES, function() {
-  angular.resumeBootstrap(MODULES);
+  angular.element().ready(function() {
+    angular.resumeBootstrap(MODULES);
+  });
 });
