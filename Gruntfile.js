@@ -24,13 +24,6 @@ module.exports = function(grunt) {
       },
     },
 
-    browserify: {
-      simple_cjs: {
-        src: 'tmp/simple/cjs/app/bootstrap.js',
-        dest: 'tmp/simple/cjs/app/app.build.js'
-      }
-    },
-
     // Before generating any new files, remove any previously-created files.
     clean: {
       tests: ['tmp'],
@@ -46,8 +39,8 @@ module.exports = function(grunt) {
             app: '../app'
           },
         },
-        src:    'examples/simple/app/app.js',
-        dest:   'tmp/simple/amd/app/app.js'
+        src: 'examples/simple/app/app.js',
+        dest: 'tmp/simple/amd/app/app.js'
       },
       simple_cjs: {
         options: {
@@ -56,14 +49,14 @@ module.exports = function(grunt) {
             app: '../app'
           }
         },
-        cwd:    'examples/simple/app/bootstrap.js',
-        dest:   'tmp/simple/cjs/app/bootstrap.js'
+        src: 'examples/simple/app/app.js',
+        dest: 'tmp/simple/cjs/app/app.js'
       },
     },
 
     // Unit tests.
     nodeunit: {
-      tests: ['test/*_test.js'],
+      tests: ['test/*.test.js'],
     },
 
   });

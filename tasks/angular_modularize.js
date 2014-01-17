@@ -73,8 +73,8 @@ module.exports = function(grunt) {
           grunt.log.writeln('Configured `requirejs:' + main.name + '"`.');
         } else {
           // Configure entry-point
-          modularize.configure(grunt, from, f.dest)
-          grunt.log.writeln('Configured `requirejs:' + from + '"`.');
+          modularize.configure(grunt, entry.name, f.dest);
+          grunt.log.writeln('Configured `browserify:' + entry.name + '"`.');
         }
       });
     });
