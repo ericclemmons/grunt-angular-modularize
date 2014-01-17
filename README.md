@@ -52,9 +52,19 @@ grunt.loadNpmTasks('grunt-angular-modularize');
 
 ### 1. Properly structure your AngularJS app
 
-- Each file should be it's own standalone module:
+- Each file should be it's own standalone module
+- The module name should be able to map to the folder it's in.
+(e.g. `admin.controllers.home` may reside in `public/scripts/admin/controllers/home.js`)
+- Each file should only require modules that it needs.
+- You should use a unique namespace to describe your app to make it easier to separate sections. (e.g. `admin` instead of `app`).
+- The root of each section (e.g. `admin.js`) should live within a folder of that namespace and not outside of it.
+(e.g. `path/to/src/admin/admin.js` alongside `path/to/src/admin/controllers/home.js`)
+- Vendors/Components live **outside** of your application.
+
+You'll end up with files that are really light & clean like:
 
 ```js
+// path/to/src/admin/admin/controllers/home.js
 angular
   .module('admin.controllers.home')
   .controller('HomeController', [
@@ -65,13 +75,6 @@ angular
   ])
 ;
 ```
-
-- The module name should be able to map to the folder it's in.
-(e.g. `admin.controllers.home` may reside in `public/scripts/admin/controllers/home.js`)
-- Each file should only require modules that it needs.
-- You should use a unique namespace to describe your app to make it easier to separate sections. (e.g. `admin` instead of `app`).
-- The root of each section (e.g. `admin.js`) should live within a folder of that namespace and not outside of it.
-(e.g. `path/to/src/admin/admin.js` alongside `path/to/src/admin/controllers/home.js`)
 
 
 ### 2. Modify `Gruntfile.js`
@@ -212,6 +215,13 @@ Later, when you optimize with `$ grunt ngmodularize requirejs`, your HTML can th
 
 Notice the `.dist.js` extension?  This is automatically configured in the `requirejs`
 target for you!
+
+> But what about using RequireJS to require vendor dependencies, such as
+> `angular`, `require`, `bootstrap`, and other stuff!?
+
+Vendors are external, application dependencies that should
+exist in the environment.  That's what NPM & Bower are for.  Those problems
+are solved.
 
 
 ### Browserify (CommonJS)
