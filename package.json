@@ -42,7 +42,13 @@
     "grunt": "~0.4.1"
   },
   "keywords": [
-    "gruntplugin"
+    "gruntplugin",
+    "angular",
+    "requirejs",
+    "amd",
+    "browserify",
+    "commonjs",
+    "concat"
   ],
   "dependencies": {}
 }
